@@ -2,9 +2,22 @@ require('dotenv').config({path:'./env'})
 import dotenv from "dotenv"
 import connectDB from "./db/index.js";
 
+dotenv.config({
+    path: './env'
+})
 
+
+
+//Itna wrapper harbaar likhna hai to utils me ek wrapper ka generalise function bana do jo ye kaam kare jo niche hai uska
 connectDB()
-
+.then(()=>{
+    app.listen(process.env.PORT|| 8000,()=> {
+        console.log(`Server is running at port :{process.env.PORT}`);
+    })
+})
+.catch((err)=> {
+    console.log("MOngo db connection failed!!", err)
+})
 
 
 
