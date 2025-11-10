@@ -1,6 +1,10 @@
 //const asyncHandler =()=> {} promises ke format me same chiz try catch wala you can do
 
-
+const asyncHAndler = (requestHandler) => {
+   return (req, res, next)=> {
+        Promise.resolve(requestHandler(req,res,next)).catch((err)=>next(err))
+    }
+}
 
 
 
@@ -17,6 +21,7 @@ export {asyncHandler}
 
 
 //Try catch way
+/*
 const asyncHandler = (fn)=>async(req, res, next)=>{
     try{
 
@@ -27,4 +32,4 @@ const asyncHandler = (fn)=>async(req, res, next)=>{
         })
     }
 
-}
+}*/
